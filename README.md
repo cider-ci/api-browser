@@ -1,12 +1,9 @@
-HAL-browser
-===========
-An API browser for the hal+json media type
+Cider-CI API  browser
+======================
 
-Example Usage
-=============
-Here is an example of a hal+json API using the browser:
+This is a slightly adopted variant of [The HAL Browser](https://github.com/mikekelly/hal-browser.git)
+for the [Cider-CI Project](https://github.com/cider-ci/cider-ci.git).
 
-[http://haltalk.herokuapp.com/explorer/browser.html](http://haltalk.herokuapp.com/explorer/browser.html)
 
 About HAL
 ========
