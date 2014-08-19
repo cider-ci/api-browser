@@ -14,6 +14,29 @@
     isUrl: function(str) {
       return str.match(urlRegex) || isCurie(str);
     },
+
+    // HACK: support 'curienames' proposal
+    curienames: function (obj) {
+      if (obj.curienames) {
+        if (typeof obj.curienames === 'string') {
+          return [obj.curienames];
+        }
+        if (Array.isArray(obj.curienames) && typeof obj.curienames[0] === 'string') {
+          return obj.curienames;
+        }
+      }
+    },
+    expandCurienames: function (rel, link) {
+      return _.chain(HAL.curienames(link)).map(function (str) {
+        if (isCurie(str)) {
+          return str;
+        } else {
+          return rel ? str + ':' + rel : null;
+        }
+      }).compact().value();
+    },
+    // END HACK
+
     truncateIfUrl: function(str) {
       var replaceRegex = /(http|https):\/\/([^\/]*)\//;
         return str.replace(replaceRegex, '.../');

@@ -67,7 +67,13 @@
               <td>
               <% if (HAL.isUrl(rel)) { %>
                 <a class="dox" href="<%= HAL.buildUrl(rel) %>"><i class="icon-book"></i></a>
+                
+              <% } else if (HAL.curienames(link)) { %>
+                  <% _.each(HAL.expandCurienames(rel, link), function(customrel) { %>
+                    <a class="dox" href="<%= HAL.buildUrl(customrel) %>"><i class="icon-book"></i></a>
+                  <% }); %>
               <% } %>
+              
               </td>
               <td>
                 <% if (link.templated === true) { %>
@@ -89,7 +95,13 @@
             <td>
             <% if (HAL.isUrl(rel)) { %>
               <a class="dox" href="<%= HAL.buildUrl(rel) %>"><i class="icon-book"></i></a>
+              
+            <% } else if (HAL.curienames(obj)) { %>
+              <% _.each(HAL.expandCurienames(rel, obj), function(customrel) { %>
+                <a class="dox" href="<%= HAL.buildUrl(customrel) %>"><i class="icon-book"></i></a>
+              <% }); %>
             <% } %>
+            
             </td>
             <td>
               <% if (obj.templated === true) { %>

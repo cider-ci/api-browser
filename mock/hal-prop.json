@@ -1,0 +1,29 @@
+{
+    "_links": {
+        "curies": [
+          { "name": "docs", "href": "http://example.com/docs/rels/{rel}", "templated": true },
+          { "name": "userhelp", "href": "http://help.example.com/articles/{rel}", "templated": true }
+        ],
+        "self": { "href": "/orders", "curienames": "docs:orders"},
+        "next": { "href": "/orders?page=2", "curienames": "docs:pagination" },
+        "find": {
+            "href": "/orders{?id}",
+            "templated": true,
+            "curienames": [
+              "docs", 
+              "userhelp:132700"
+          ]
+        },
+        "admins": [{
+            "href": "/admins/2",
+            "title": "Fred",
+            "curienames": "docs"
+        }, {
+            "href": "/admins/5",
+            "title": "Kate",
+            "curienames": "docs"
+        }]
+    },
+    "currentlyProcessing": 14,
+    "shippedToday": 20
+}
