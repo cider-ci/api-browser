@@ -1,0 +1,46 @@
+/* 
+
+TLDR: allow a 'curienames' property to '_link' objects, 
+as another way to define curie names (instead of prefixing).
+
+The name of the prop is up to debate, 
+I only chose it because it matches the wording of the spec.
+
+*/
+
+{
+    "_links": {
+        "curies": [
+          // this point to the API docs, as before
+          { "name": "docs", "href": "http://example.com/docs/rels/{rel}", "templated": true },
+          // this would point to the end-user help:
+          { "name": "userhelp", "href": "http://help.example.com/articles/{rel}", "templated": true }
+        ],
+        // we can point to docs for self! yay!
+        "self": { "href": "/orders", "curienames": "docs:orders"},
+        // or even docs for 'next' (ex: explaining pagination)
+        "next": { "href": "/orders?page=2", "curienames": "docs:" },
+        "find": {
+            "href": "/orders{?id}",
+            "templated": true,
+            // both kinds of docs are available:
+            "curienames": [
+              // - 'docs', rel is the normal key ('find')
+              "docs", 
+              // - 'userhelp', overriding the rel. real world example: <https://support.twitter.com/articles/132700>
+              "userhelp:132700"
+          ]
+        },
+        "admins": [{
+            "href": "/admins/2",
+            "title": "Fred",
+            "curienames": "docs" // there is no 'userhelp' available here!
+        }, {
+            "href": "/admins/5",
+            "title": "Kate",
+            "curienames": "docs"
+        }]
+    },
+    "currentlyProcessing": 14,
+    "shippedToday": 20
+}

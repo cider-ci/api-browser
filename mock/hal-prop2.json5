@@ -1,0 +1,43 @@
+/* 
+
+This version of the proposal renames some props 
+to make them even more human-readable (to be discussed).
+
+*/
+
+{
+    "_links": {
+        "docs-links": [
+          // this point to the API docs, as before
+          { "name": "docs", "href": "http://example.com/docs/rels/{rel}", "templated": true },
+          // this would point to the end-user help:
+          { "name": "userhelp", "href": "http://help.example.com/articles/{rel}", "templated": true }
+        ],
+        // we can point to docs for self! yay!
+        "self": { "href": "/orders", "docs": "docs:orders"},
+        // or even docs 'next' (ex: explaining pagination)
+        "next": { "href": "/orders?page=2", "docs": "docs:" },
+        "find": {
+            "href": "/orders{?id}",
+            "templated": true,
+            // both kinds of docs are available:
+            "docs": [
+              // - docs, rel is the normal key ('find')
+              "docs", 
+              // - userhelp, ovveriding the rel. real world example: <https://support.twitter.com/articles/132700>
+              "userhelp:132700"
+          ]
+        },
+        "admins": [{
+            "href": "/admins/2",
+            "title": "Fred",
+            "docs": "docs" // there is no 'userhelp' available here!
+        }, {
+            "href": "/admins/5",
+            "title": "Kate",
+            "docs": "docs"
+        }]
+    },
+    "currentlyProcessing": 14,
+    "shippedToday": 20
+}
