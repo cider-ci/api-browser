@@ -1,3 +1,14 @@
+
+# Deprecation Notice
+
+**This component is not used by Cider-CI anymore.**
+
+Cider-CI switched from HAL to [JSON-ROA](http://json-roa.github.io/) 
+and the [JSON-ROA Browser](http://json-roa.github.io/browser/about.html)
+in version 2.0 and later.
+
+
+
 Cider-CI API  browser
 ======================
 
